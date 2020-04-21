@@ -1,0 +1,13 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Users Page</h1>
+<p>{{ message }}</p>
+{% if users %}
+<ul>
+  {% for user in users %}
+  <li>{{ user["user_handle"] }}</li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<p>Users not found.</p>
+{% endif %} {% endblock %}

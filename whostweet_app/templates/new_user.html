@@ -1,0 +1,13 @@
+{% extends "layout.html" %} {% block content %}
+
+<h1>New User Page</h1>
+
+<p>Please fill out the form and submit to create a new book!</p>
+
+<form action="/users/create" method="POST">
+  <label>User Handle:</label>
+  <input type="text" name="user_handle" placeholder="user1" value="user1" />
+
+  <button>Submit</button>
+</form>
+{% endblock %}
