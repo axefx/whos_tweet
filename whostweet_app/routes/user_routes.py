@@ -63,6 +63,14 @@ def fetch_user_data(screen_name=None):
     return "OK"
 
 
-@user_routes.route("/users/new")
-def new_user():
-    return render_template("new_user.html")
+@user_routes.route("/users")
+def list_users_html():
+    db_users = User.query.all()
+    return render_template("users.html", users=db_users)
+
+
+@user_routes.route("/users/<screen_name>")
+def get_user(screen_name=None):
+    print(screen_name)
+    db_user = User.query.filter(User.screen_name == screen_name).one()
+    return render_template("user.html", user=db_user, tweets=db_user.tweets)
