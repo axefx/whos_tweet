@@ -1,0 +1,1 @@
+web: gunicorn "whostweet_app:create_app()"

@@ -3,9 +3,11 @@
 <p>{{ message }}</p>
 {% if users %}
 <p>The database contains the following users:</p>
-<ul>
+<ul class="list-group">
   {% for user in users %}
-  <li>{{ user.screen_name }}</li>
+  <li class="list-group-item">
+    <a href="/users/{{user.screen_name}}">{{ user.screen_name }}</a>
+  </li>
   {% endfor %}
 </ul>
 

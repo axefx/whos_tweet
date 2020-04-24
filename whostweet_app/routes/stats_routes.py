@@ -9,7 +9,9 @@ stats_routes = Blueprint("stats_routes", __name__)
 
 @stats_routes.route("/")
 def wt_prediction_form():
-    return render_template("prediction_form.html")
+    user_records = User.query.all()
+    user_names = [user.screen_name for user in user_records]
+    return render_template("prediction_form.html", user_names=user_names)
 
 
 @stats_routes.route("/stats/predict", methods=["POST"])
@@ -19,7 +21,7 @@ def whostweet_prediction():
     screen_name_b = request.form["screen_name_b"]
     tweet_text = request.form["tweet_text"]
     # train model
-    model = LogisticRegression(random_state=24, max_iter=1000)
+    model = LogisticRegression(random_state=24, max_iter=2000)
 
     user_a = User.query.filter(User.screen_name == screen_name_a).one()
     user_b = User.query.filter(User.screen_name == screen_name_b).one()

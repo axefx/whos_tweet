@@ -26,7 +26,7 @@ def fetch_user_data(screen_name=None):
     api = api_client()
     twitter_user = api.get_user(screen_name)
     statuses = api.user_timeline(
-        screen_name, tweet_mode="extended", count=150, exclude_replies=True, include_rts=False)
+        screen_name, tweet_mode="extended", count=150)
 
     # user_records = User.query.all()
     # return render_template("users.html", message="Here's some users", users=user_records)

@@ -8,30 +8,37 @@ content %}
 </p>
 
 <form action="/stats/predict" method="POST">
-  <label>Twitter User A:</label>
-  <select name="screen_name_a">
-    <option value="elonmusk" selected="true">@elonmusk</option>
-    <option value="tim_cook">@tim_cook</option>
-    <option value="jack">@jack</option>
-    <option value="Carl_C_Icahn">@Carl_C_Icahn</option>
-  </select>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Twitter User A:</label>
+    <div class="col-sm-9">
+      <select name="screen_name_a" class="form-control">
+        {% for user in user_names|reverse %}
+        <option value="{{user}}">@{{user}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
   <br />
 
-  <label>Twitter User B:</label>
-  <select name="screen_name_b">
-    <option value="elonmusk">@elonmusk</option>
-    <option value="tim_cook" selected="true">@tim_cook</option>
-    <option value="jack">@jack</option>
-    <option value="Carl_C_Icahn">@Carl_C_Icahn</option>
-  </select>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">Twitter User B:</label>
+    <div class="col-sm-9">
+      <select name="screen_name_b" class="form-control">
+        {% for user in user_names %}
+        <option value="{{user}}">@{{user}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
   <br />
 
   <label>Tweet Text:</label>
   <input
     type="text"
     name="tweet_text"
-    placeholder="Tesla Model S production facility is great"
-    value="Tesla Model S production facility is great"
+    placeholder="New feature on twitter is great"
+    value="New feature on twitter is great"
+    class="form-control"
   />
   <br />
 
